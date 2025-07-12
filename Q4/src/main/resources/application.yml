@@ -1,0 +1,13 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: dlq-group
+      auto-offset-reset: earliest
+    listener:
+      ack-mode: record
+      type: batch
+      missing-topics-fatal: false
+      default-error-handler:
+        dead-letter-publish:
+          topic: dlq-topic
